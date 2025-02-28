@@ -1,0 +1,363 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* { /*outline: 1px solid green;*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, #286f74, #011e20);
+    font-weight: 400;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+	overflow: hidden;
+    user-select: none;
+    transition: all .5s ease;
+}
+
+.currency-converter-card {
+    position: absolute;
+    top: 50%;
+	left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 520px;
+    height: 600px;
+	transform: translate(-50%, -50%) scale(1);
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, .3),
+		inset 1px 1px 2px rgba(180, 178, 178, .5),
+		1px 1px 2px rgba(180, 178, 178, .5),
+		inset -1px -1px 2px rgba(54, 53, 53, .5);
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.currency-converter-card-title {
+    position: absolute;
+	top: 0;
+	height: 80px;
+	width: 100%;
+	font-size: 30px;
+	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .3),
+		inset 1px 1px 2px rgba(180, 178, 178, .5),
+		1px 1px 2px rgba(180, 178, 178, .5),
+		inset -1px -1px 2px rgba(54, 53, 53, .5);
+}
+
+.currency-converter-card-content {
+    position: relative;
+    top: 10%;
+    width: 90%;
+    height: 60%;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.currency-converter-card-content input {
+	position: absolute;
+    top: 10px;
+	height: 40px;
+	width: 300px;
+	border: none;
+	background: transparent;
+    mix-blend-mode: difference;
+    color: rgba(180, 178, 178, .9);
+	padding: 0 15px;
+	font-size: 15px;
+    font-weight: 500;
+	box-sizing: border-box;
+	outline: none;
+	border-radius: 5px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .3),
+		inset 1px 1px 2px rgba(180, 178, 178, .5),
+		1px 1px 2px rgba(180, 178, 178, .5),
+		inset -1px -1px 2px rgba(54, 53, 53, .5);
+    transition: all .5s ease;
+}
+
+.currency-converter-card-content input::placeholder {
+    color: rgba(180, 178, 178, .7);
+}
+
+.currency-converter-card-content input:focus {
+    color: rgba(180, 178, 178, 1);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .5),
+		inset 1px 1px 2px rgba(180, 178, 178, .9),
+		1px 1px 2px rgba(180, 178, 178, .9),
+		inset -1px -1px 2px rgba(54, 53, 53, .9);
+}
+
+.currency-label {
+    position: absolute;
+    top: 120px;
+    width: 100%;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.currency-label .from {
+    position: relative;
+    width: 50%;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    font-size: 15px;
+	font-weight: 700;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.currency-label .to {
+    position: relative;
+    width: 50%;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    font-size: 15px;
+	font-weight: 700;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.currency-converter-card-content .currency-card-container {
+    position: relative;
+    width: 45%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.currency-converter-card-content .currency-card-content {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.currency-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-amount {
+    position: absolute;
+    top: 60px;
+    left: 2.5%;  
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-amount .bxs-error-circle {
+    position: absolute;
+    left: 30px;
+    font-size: 20px;
+}
+
+.currency-card .currency-card-value {
+    /*
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: linear-gradient(to right, rgba(0, 239, 255, 0.3), rgba(2, 180, 194, 0.4));
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.25),
+        inset 1px 1px 2px rgba(255,255,255,0.25),
+        inset -1px -1px 2px rgba(0,0,0,0.5);
+    */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .3),
+		inset 1px 1px 2px rgba(180, 178, 178, .6),
+		1px 1px 2px rgba(180, 178, 178, .6),
+		inset -1px -1px 2px rgba(54, 53, 53, .6);
+    opacity: .8;
+    transform: scale(.9);
+    will-change: transform;
+    cursor: pointer;
+    transition: all .5s ease;
+}
+
+.currency-converter-card-content .currency-card input[type="radio"] {
+    display: none;
+}
+
+.currency-card input[type="radio"]:checked + .currency-card-value {
+	transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .5),
+		inset 1px 1px 2px rgba(180, 178, 178, .9),
+		1px 1px 2px rgba(180, 178, 178, .9),
+		inset -1px -1px 2px rgba(54, 53, 53, .9);
+	transition: all .5s ease;
+}
+
+.swiper-button-prev.swiper-navBtn {
+	position: absolute;
+	left: -5px;
+	font-size: 5px;
+	font-weight: 800;
+	transform: scale(.6);
+	color: rgba(0, 0, 0, 0.6);
+	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+	will-change: transform;
+	transition: all .3s ease;
+}
+
+.swiper-button-next.swiper-navBtn {
+	position: absolute;
+	right: -5px;
+	font-size: 10px;
+	font-weight: 800;
+	transform: scale(.6);
+	color: rgba(0, 0, 0, 0.6);
+	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+	will-change: transform;
+	transition: all .3s ease;
+}
+
+.swiper-button-prev.swiper-navBtn:hover {
+	color: rgba(0, 0, 0, 0.8);
+	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+	transform: scale(.5);
+	transition: all .3s ease;
+}
+
+.swiper-button-next.swiper-navBtn:hover {
+	color: rgba(0, 0, 0, 0.8);
+	text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.9);
+	transform: scale(.5);
+	transition: all .3s ease;
+
+}
+
+.swiper-pagination.swiper-navBtn {
+	position: absolute;
+    height: 15px;
+}
+
+.swiper-pagination.swiper-navBtn .swiper-pagination-bullet {
+	width: 8px;
+	height: 8px;
+	background: rgba(0, 0, 0, 0.6);
+	box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
+	opacity: 0.5;
+	margin: 0 5px;
+	will-change: transform;
+	transition: all 0.3s ease;
+}
+
+.swiper-pagination.swiper-navBtn .swiper-pagination-bullet-active {
+	width: 8px;
+	height: 8px;
+	background: rgba(0, 0, 0, 0.9);
+	box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
+	opacity: 0.5;
+	margin: 0 5px;
+	transform: scale(1.02);
+	transition: all 0.3s ease;
+}
+
+.swiper-pagination.swiper-navBtn .swiper-pagination-bullet:hover {
+	transform: scale(1.01);
+	transition: all 0.3s ease;
+}
+
+.convert-button {
+    position: absolute;
+    bottom: 80px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    mix-blend-mode: difference;
+    border: none;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .3),
+		inset 1px 1px 2px rgba(180, 178, 178, .5),
+		1px 1px 2px rgba(180, 178, 178, .5),
+		inset -1px -1px 2px rgba(54, 53, 53, .5);
+    cursor: pointer;
+    transition: all .5s ease;
+    will-change: transform;
+}
+
+.convert-button:hover {
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, .5),
+		inset 1px 1px 2px rgba(180, 178, 178, .9),
+		1px 1px 2px rgba(180, 178, 178, .9),
+		inset -1px -1px 2px rgba(54, 53, 53, .9);   
+    transition: all .5s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .currency-converter-card {
+        transform: translate(-50%, -50%) scale(.8);
+        width: 420px;
+    }
+
+
+}
