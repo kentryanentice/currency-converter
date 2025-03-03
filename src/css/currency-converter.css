@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-* { /*outline: 1px solid green;*/
+* { /*outline: .5px solid green;*/
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -8,7 +8,7 @@
 }
 
 body {
-    background: linear-gradient(to right, #286f74, #011e20);
+    background: linear-gradient(to right, #01696e, #001618);
     font-weight: 400;
     height: 100vh;
     display: grid;
@@ -49,7 +49,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	border-radius: 5px;
+	border-radius: 5px 5px 0px 0px;
     background: linear-gradient(to right, #f7f7f7, #787777);
 	-webkit-background-clip: text;
     background-clip: text;
@@ -62,7 +62,7 @@ body {
 
 .currency-converter-card-content {
     position: relative;
-    top: 10%;
+    top: 2.5%;
     width: 90%;
     height: 60%;
     display: flex;
@@ -72,7 +72,7 @@ body {
 
 .currency-converter-card-content input {
 	position: absolute;
-    top: 10px;
+    top: 0px;
 	height: 40px;
 	width: 300px;
 	border: none;
@@ -93,7 +93,13 @@ body {
 }
 
 .currency-converter-card-content input::placeholder {
-    color: rgba(180, 178, 178, .7);
+    opacity: .5;
+    font-size: 15px;
+    font-weight: 500;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .currency-converter-card-content input:focus {
@@ -106,7 +112,7 @@ body {
 
 .currency-label {
     position: absolute;
-    top: 120px;
+    top: 70px;
     width: 100%;
     display: flex;
 	align-items: center;
@@ -116,7 +122,9 @@ body {
 .currency-label .from {
     position: relative;
     width: 50%;
+    height: 100px;
     display: flex;
+    flex-direction: column;
 	align-items: center;
 	justify-content: center;
     font-size: 15px;
@@ -130,7 +138,9 @@ body {
 .currency-label .to {
     position: relative;
     width: 50%;
+    height: 100px;
     display: flex;
+    flex-direction: column;
 	align-items: center;
 	justify-content: center;
     font-size: 15px;
@@ -141,15 +151,59 @@ body {
     color: transparent;
 }
 
+.currency-label span {
+    position: relative;
+    top: -10px;
+    right: 0;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    width: 230px;
+    height: 40px;
+    font-size: 10px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    gap: 5px;
+	animation: fadeIn .5s ease-in-out forwards;
+}
+
+.currency-label img {
+    position: relative;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+	animation: fadeIn .5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	0% {
+	  	opacity: 0;
+	}
+	100% {
+	  	opacity: 1;
+	}
+}
+
 .currency-converter-card-content .currency-card-container {
     position: relative;
-    width: 45%;
-    height: 120px;
+    top: 35px;
+    width: 50%;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 10px;
     overflow: hidden;
+    border-radius: 5px;
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, .3),
+		inset 1px 1px 2px rgba(180, 178, 178, .6),
+		1px 1px 2px rgba(180, 178, 178, .6),
+		inset -1px -1px 2px rgba(54, 53, 53, .6);*/
 }
 
 .currency-converter-card-content .currency-card-content {
@@ -157,6 +211,42 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.search-currency {
+    position: absolute;
+    top: 5px;
+    left: 10%;
+    width: 80%;
+}
+
+.search-currency input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 35px;
+    border: none;
+	background: transparent;
+    mix-blend-mode: difference;
+    color: rgba(180, 178, 178, .9);
+	padding: 0 15px;
+	font-size: 15px;
+    font-weight: 500;
+	box-sizing: border-box;
+	outline: none;
+	border-radius: 5px;
+    transition: all .5s ease;
+}
+
+.search-currency input::placeholder {
+    opacity: .5;
+    font-size: 12px;
+    font-weight: 500;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .swiper {
@@ -180,19 +270,58 @@ body {
 
 .error-amount {
     position: absolute;
-    top: 60px;
+    top: 50px;
     left: 2.5%;  
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    animation: fadeIn .5s ease-in-out forwards;
 }
 
 .error-amount .bxs-error-circle {
     position: absolute;
-    left: 30px;
-    font-size: 20px;
+    left: 55px;
+    font-size: 25px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.error-currency {
+    position: absolute;
+    bottom: -5px;
+    left: 2.5%;  
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.error-currency .bxs-error-circle {
+    position: absolute;
+    left: 55px;
+    font-size: 25px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
 .currency-card .currency-card-value {
@@ -214,8 +343,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 5px;
     background: linear-gradient(to right, #f7f7f7, #787777);
 	-webkit-background-clip: text;
@@ -250,7 +379,7 @@ body {
 
 .swiper-button-prev.swiper-navBtn {
 	position: absolute;
-	left: -5px;
+	left: -2.5px;
 	font-size: 5px;
 	font-weight: 800;
 	transform: scale(.6);
@@ -262,7 +391,7 @@ body {
 
 .swiper-button-next.swiper-navBtn {
 	position: absolute;
-	right: -5px;
+	right: -2.5px;
 	font-size: 10px;
 	font-weight: 800;
 	transform: scale(.6);
@@ -289,12 +418,12 @@ body {
 
 .swiper-pagination.swiper-navBtn {
 	position: absolute;
-    height: 15px;
+    height: 30px;
 }
 
 .swiper-pagination.swiper-navBtn .swiper-pagination-bullet {
-	width: 8px;
-	height: 8px;
+	width: 7px;
+	height: 7px;
 	background: rgba(0, 0, 0, 0.6);
 	box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
 	opacity: 0.5;
@@ -304,8 +433,8 @@ body {
 }
 
 .swiper-pagination.swiper-navBtn .swiper-pagination-bullet-active {
-	width: 8px;
-	height: 8px;
+	width: 7px;
+	height: 7px;
 	background: rgba(0, 0, 0, 0.9);
 	box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.9);
 	opacity: 0.5;
@@ -321,13 +450,13 @@ body {
 
 .convert-button {
     position: absolute;
-    bottom: 80px;
-    width: 120px;
+    bottom: 60px;
+    width: 140px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 15px;
     mix-blend-mode: difference;
@@ -351,6 +480,144 @@ body {
 		1px 1px 2px rgba(180, 178, 178, .9),
 		inset -1px -1px 2px rgba(54, 53, 53, .9);   
     transition: all .5s ease;
+}
+
+.animated-dots {
+	position: relative;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.animated-dots .dots::after {
+	content: "";
+	position: absolute;
+	top: -7px;
+	right: -25px;
+	display: inline-block;
+	width: 1em;
+	height: 1.5em;
+	animation: dots 1s steps(4, end) infinite;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+	font-size: 1.5em;
+	text-align: left;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+@keyframes dots {
+	0% {
+		content: "";
+		opacity: 0.5;
+	}
+	25% {
+		content: ".";
+		opacity: 1;
+	}
+	50% {
+		content: "..";
+		opacity: 1;
+	}
+	75% {
+		content: "...";
+		opacity: 1;
+	}
+	100% {
+		content: "";
+		opacity: 0.5;
+	}
+}
+
+.data {
+    position: absolute;
+    bottom: 120px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    gap: 5px;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.data .data-conversion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 20px;
+    font-weight: 600;
+    gap: 5px;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.data .data-rate {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 11px;
+    font-weight: 600;
+    gap: 5px;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.empty-error-message {
+    position: absolute;
+    bottom: 30px;
+    left: 2.5%;  
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 13px;
+    font-weight: 600;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.empty-error-message .bxs-error-circle {
+    position: absolute;
+    left: 50px;
+    font-size: 25px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeIn .5s ease-in-out forwards;
+}
+
+.empty-error-message .bxs-check-circle {
+    position: absolute;
+    left: 90px;
+    font-size: 25px;
+    background: linear-gradient(to right, #f7f7f7, #787777);
+	-webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: fadeIn .5s ease-in-out forwards;
 }
 
 @media screen and (max-width: 768px) {
